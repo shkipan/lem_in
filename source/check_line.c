@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:04:11 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/09 20:25:15 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/09 20:47:53 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int				check_line(t_lemin *lemin, char *line)
 	short	ret;
 
 	ret = 0;
-	(!CHECK_BIT(lemin->opt, 17)) ? ft_printf("%s\n", line) : 0;
+	(!CHECK_FLAG(lemin->opt, 'r')) ? ft_printf("%s\n", line) : 0;
 	if (line[0] == '#')
 	{
 		if (check_status(lemin, line, &ret))

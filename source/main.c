@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:01:52 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/09 20:28:23 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/09 20:45:49 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		main(int ac, char **av)
 		x = x->next;
 	}
 	ft_printf("start = %s\nend = %s\nr_count = %d l_count = %d\n", lemin->start, lemin->end, lemin->r_count, lemin->l_count);
-	if (CHECK_BIT(lemin->opt, 11))
+	if (CHECK_FLAG(lemin->opt, 'l'))
 		system("leaks lem-in");
 	return (0);
 }

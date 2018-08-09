@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 11:09:19 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/09 20:28:16 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/09 20:47:30 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,24 @@ static void	parse_errors(t_lemin *lemin)
 void		error(t_lemin *lemin, short code)
 {
 	ft_printf("ERROR\n");
-	if (code == 1 && CHECK_BIT(lemin->opt, 4))
+	if (code == 1 && CHECK_FLAG(lemin->opt, 'e'))
 		parse_errors(lemin);
-	if (code == -1 && CHECK_BIT(lemin->opt, 4))
+	if (code == -1 && CHECK_FLAG(lemin->opt, 'e'))
 		ft_printf("Ant's number must contain only digits\n");
-	if (code == -2 && CHECK_BIT(lemin->opt, 4))
+	if (code == -2 && CHECK_FLAG(lemin->opt, 'e'))
 		ft_printf("Ant's number must be a positive number\n");
-	if (code == -3 && CHECK_BIT(lemin->opt, 4))
+	if (code == -3 && CHECK_FLAG(lemin->opt, 'e'))
 		ft_printf("Ant's number must be a nonzero number\n");
-	if (code == 41 && CHECK_BIT(lemin->opt, 4))
+	if (code == 41 && CHECK_FLAG(lemin->opt, 'e'))
 		ft_printf("Second start has arrived\n");
-	if (code == 42 && CHECK_BIT(lemin->opt, 4))
+	if (code == 42 && CHECK_FLAG(lemin->opt, 'e'))
 		ft_printf("Second end has arrived\n");
-	if (code > 2 && code < 7 && CHECK_BIT(lemin->opt, 4))
+	if (code > 2 && code < 7 && CHECK_FLAG(lemin->opt, 'e'))
 		room_errors(code);
-	if (code > 7 && code < 12 && CHECK_BIT(lemin->opt, 4))
+	if (code > 7 && code < 12 && CHECK_FLAG(lemin->opt, 'e'))
 		link_errors(code);
 	freesher(lemin);
-	if (CHECK_BIT(lemin->opt, 11))
+	if (CHECK_FLAG(lemin->opt, 'l'))
 		system("leaks lem-in");
 	exit(1);
 }

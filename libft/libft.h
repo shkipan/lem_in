@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/31 11:11:20 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/09 19:45:09 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/09 20:45:17 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define CHECK_BIT(x, n) (((x) >> (n)) & 1)
 # define SET_BIT(x, n) ((x) | (1 << (n)))
 # define DROP_BIT(x, n) ((x) & ~(1 << (n)))
+# define CHECK_FLAG(x, c) CHECK_BIT(x, c - 'a')
 # define ABS(x) ((x) < 0 ? -(x) : (x))
 
 /*
