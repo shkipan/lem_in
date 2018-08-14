@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:04:11 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/09 20:47:53 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/12 12:15:34 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ short			check_link(t_lemin *lemin, char *line)
 	if (flag != 1)
 		return (9);
 	if (lemin->status == 'l')
-		lemin->l_count++;
-//		add_link(&(lemin->links), line);
+		add_link(lemin, line);
 	lemin->status = 'l';
 	return (0);
 }
@@ -84,7 +83,7 @@ short			check_room(t_lemin *lemin, char *line)
 	if (flag != 2)
 		return (5);
 	if (lemin->status == 'r')
-		add_room(&(lemin->rooms), &(lemin->r_count), line);
+		add_room(lemin, line);
 	return (0);
 }
 

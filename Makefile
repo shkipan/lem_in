@@ -6,17 +6,21 @@
 #    By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/07 14:30:48 by dskrypny          #+#    #+#              #
-#    Updated: 2018/08/09 18:28:31 by dskrypny         ###   ########.fr        #
+#    Updated: 2018/08/13 19:06:59 by dskrypny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
-SOURCE = adding.c \
+SOURCE = check_line.c \
 		 error.c \
+		 links.c \
 		 main.c \
-		 check_line.c \
-		 pull_start_end.c
+		 path.c \
+		 pull_start_end.c \
+		 rooms.c \
+		 queue.c\
+		 printer.c
 
 OBJ_DIR = ./objects/
 SRC_DIR = ./source/

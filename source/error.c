@@ -6,26 +6,11 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 11:09:19 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/09 20:47:30 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/14 11:02:46 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lem_in.h"
-
-static void	freesher(t_lemin *lemin)
-{
-	t_room	*room;
-	t_room	*temp;
-
-	room = lemin->rooms;
-	while (room)
-	{
-		temp = room;
-		free(temp->id);
-		room = room->next;
-		free(temp);
-	}
-}
 
 static void	room_errors(short code)
 {
@@ -37,6 +22,8 @@ static void	room_errors(short code)
 		ft_printf("Invalid number of spaces\n");
 	if (code == 6)
 		ft_printf("Room's name can't begin with L\n");
+	if (code == 7)
+		ft_printf("Duplicate coordinates\n");
 }
 
 static void	link_errors(short code)
@@ -51,18 +38,34 @@ static void	link_errors(short code)
 		ft_printf("Room's definition can't be here\n");
 	if (code == 12)
 		ft_printf("Invalid link\n");
+	if (code == 13)
+		ft_printf("Invalid first room id in link\n");
+	if (code == 14)
+		ft_printf("Invalid second room id in link\n");
+	if (code == 15)
+		ft_printf("The room can't be connected to itself\n");
 }
 
 static void	parse_errors(t_lemin *lemin)
 {
-	if (!lemin->start)
-		ft_printf("No start point\n");
-	if (!lemin->end)
-		ft_printf("No end point\n");
 	if (!lemin->r_count)
 		ft_printf("No rooms\n");
-	if (!lemin->l_count)
+	else if (!lemin->l_count)
 		ft_printf("No links\n");
+	else if (!lemin->start)
+		ft_printf("No start point\n");
+	else if (!lemin->end)
+		ft_printf("No end point\n");
+}
+
+static void	map_errors(short code)
+{
+	if (code == 20)
+		ft_printf("Start is not connected to the end\n");
+	if (code == 21)
+		ft_printf("Start is not connected to anything\n");
+	if (code == 22)
+		ft_printf("End is not connected to anything\n");
 }
 
 void		error(t_lemin *lemin, short code)
@@ -80,11 +83,12 @@ void		error(t_lemin *lemin, short code)
 		ft_printf("Second start has arrived\n");
 	if (code == 42 && CHECK_FLAG(lemin->opt, 'e'))
 		ft_printf("Second end has arrived\n");
-	if (code > 2 && code < 7 && CHECK_FLAG(lemin->opt, 'e'))
+	if (code > 2 && code < 8 && CHECK_FLAG(lemin->opt, 'e'))
 		room_errors(code);
-	if (code > 7 && code < 12 && CHECK_FLAG(lemin->opt, 'e'))
+	if (code > 7 && code < 17 && CHECK_FLAG(lemin->opt, 'e'))
 		link_errors(code);
-	freesher(lemin);
+	if (code > 19 && code < 23 && CHECK_FLAG(lemin->opt, 'e'))
+		map_errors(code);
 	if (CHECK_FLAG(lemin->opt, 'l'))
 		system("leaks lem-in");
 	exit(1);

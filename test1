@@ -5,4 +5,8 @@ f 3 3
 ##end
 s 2 2
 a 2 1
-f-s
+x 5 1
+f-a
+a-s
+x-f
+s-x

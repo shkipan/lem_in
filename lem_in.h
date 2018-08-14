@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 10:56:54 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/09 20:34:39 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/14 11:28:48 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,53 @@
 
 # include "libft/libft.h"
 
+typedef struct s_room	t_room;
+
+struct			s_room
+{
+	int		ants;
+	char	status;
+	int		x;
+	int		y;
+	char	*id;
+	char	*father;
+	t_room	*next;
+};
+
 typedef struct s_link	t_link;
 
 struct			s_link
 {
 	char	*id;
-	char	**branches;
+	char	**branch;
 	t_link	*next;
 };
 
-typedef struct s_room	t_room;
+typedef struct s_path	t_path;
 
-struct			s_room
+struct			s_path
 {
-	char	*id;
-	int		x;
-	int		y;
-	char	status;
-	t_room	*next;
+	int		length;
+	char	**branch;
+	t_path	*next;
 };
 
 typedef struct	s_lemin
 {
-	char			status;
+	short			status;
 	short			n_r_status;
 	int				ants;
 	int				r_count;
 	int				l_count;
+	int				p_count;
 	unsigned int	opt;
 	char			*start;
 	char			*end;
+	char			**queue;
+	t_path			*path;
 	t_room			*rooms;
 	t_link			*links;
+
 }				t_lemin;
 
 short			check_link(t_lemin *lemin, char *line);
@@ -54,9 +69,23 @@ short			check_room(t_lemin *lemin, char *line);
 int				check_line(t_lemin *lemin, char *line);
 void			pull_se(t_lemin *lemin, char *line);
 
-void			add_room(t_room **rooms, int *count, char *line);
-//void			add_link(t_lemin *lemin, char *line);
+void			add_room(t_lemin * lemin, char *line);
+t_room			*find_room(t_lemin *lemin, char *id);
+void			check_start_end(t_lemin *lemin);
+
+void			add_link(t_lemin *lemin, char *line);
+t_link			*find_link(t_lemin *lemin, char *id);
+
+void			add_to_queue(t_lemin *lemin, char *id);
+void			clear_queue(t_lemin *lemin);
+short			bfs(t_lemin *lemin);
+
+void			add_path(t_lemin *lemin);
+void			fill_path(t_lemin *lemin, t_path **path);
 
 void			error(t_lemin *lemin, short code);
+
+  void print_lemin(t_lemin *lemin);
+void			print_path(t_lemin *lemin);
 
 #endif
