@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 10:38:42 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/14 11:29:46 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/14 13:01:47 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		add_room(t_lemin *lemin, char *line)
 	(*temp)->father = NULL;
 	(*temp)->x = x;
 	(*temp)->y = y;
-	(*temp)->busy = 0;
+	(*temp)->ant = 0;
 	(*temp)->status = 'o';
 	(*temp)->next = NULL;
 	lemin->r_count += 1;

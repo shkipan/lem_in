@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 10:56:54 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/14 11:28:48 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/14 18:29:18 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_room	t_room;
 
 struct			s_room
 {
-	int		ants;
+	int		ant;
 	char	status;
 	int		x;
 	int		y;
@@ -51,6 +51,7 @@ typedef struct	s_lemin
 	short			status;
 	short			n_r_status;
 	int				ants;
+	int				curr_ant;
 	int				r_count;
 	int				l_count;
 	int				p_count;
@@ -69,7 +70,7 @@ short			check_room(t_lemin *lemin, char *line);
 int				check_line(t_lemin *lemin, char *line);
 void			pull_se(t_lemin *lemin, char *line);
 
-void			add_room(t_lemin * lemin, char *line);
+void			add_room(t_lemin *lemin, char *line);
 t_room			*find_room(t_lemin *lemin, char *id);
 void			check_start_end(t_lemin *lemin);
 
@@ -83,9 +84,11 @@ short			bfs(t_lemin *lemin);
 void			add_path(t_lemin *lemin);
 void			fill_path(t_lemin *lemin, t_path **path);
 
+int				push_ants(t_lemin *lemin);
+
 void			error(t_lemin *lemin, short code);
 
-  void print_lemin(t_lemin *lemin);
+void			print_lemin(t_lemin *lemin);
 void			print_path(t_lemin *lemin);
 
 #endif

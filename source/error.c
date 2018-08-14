@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 11:09:19 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/14 11:02:46 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/14 17:35:51 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	room_errors(short code)
 	if (code == 4)
 		ft_printf("Invalid symbol in room's definition\n");
 	if (code == 5)
-		ft_printf("Invalid number of spaces\n");
+		ft_printf("Invalid location of spaces\n");
 	if (code == 6)
 		ft_printf("Room's name can't begin with L\n");
 	if (code == 7)

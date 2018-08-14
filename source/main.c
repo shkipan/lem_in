@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:01:52 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/14 11:19:29 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/14 17:32:09 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_lemin	*init_lemin(int ac, char **av)
 	ret = (t_lemin *)malloc(sizeof(t_lemin));
 	ret->ants = 0;
 	ret->status = 'a';
+	ret->curr_ant = 1;
 	ret->r_count = 0;
 	ret->l_count = 0;
 	ret->p_count = 0;
@@ -69,7 +70,7 @@ static int		spin_lemin(t_lemin *lemin)
 	add_to_queue(lemin, lemin->start);
 	while (!(r = bfs(lemin)))
 		NULL;
-	if (r == -1 && !lemin->p_count)
+	if (r == -1 && lemin->p_count == 0)
 		error(lemin, 20);
 	if (r == -1 && lemin->p_count)
 		return (0);
@@ -94,7 +95,12 @@ int				main(int ac, char **av)
 	read_lemin(lemin);
 	while (spin_lemin(lemin))
 		NULL;
-	print_lemin(lemin);
+	if (CHECK_FLAG(lemin->opt, 'r'))
+		print_lemin(lemin);
+	find_room(lemin, lemin->start)->ant = lemin->ants;
+	ft_printf("\n");
+	while (push_ants(lemin))
+		NULL;
 	if (CHECK_FLAG(lemin->opt, 'l'))
 		system("leaks lem-in");
 	return (0);

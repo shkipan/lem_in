@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:04:11 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/12 12:15:34 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/14 18:12:49 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ short			check_room(t_lemin *lemin, char *line)
 			flag++;
 		i++;
 	}
-	if (flag != 2)
+	if (flag != 2 || (ft_strrchr(line, ' ') - ft_strchr(line, ' ') == 1))
 		return (5);
 	if (lemin->status == 'r')
 		add_room(lemin, line);
@@ -110,7 +110,7 @@ int				check_line(t_lemin *lemin, char *line)
 	short	ret;
 
 	ret = 0;
-	(!CHECK_FLAG(lemin->opt, 'r')) ? ft_printf("%s\n", line) : 0;
+	ft_printf("%s\n", line);
 	if (line[0] == '#')
 	{
 		if (check_status(lemin, line, &ret))
