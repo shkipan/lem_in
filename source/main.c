@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:01:52 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/14 17:32:09 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/24 16:37:26 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void		read_lemin(t_lemin *lemin)
 {
 	char	*line;
 
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) > 0)
 	{
 		check_line(lemin, line);
 		if (lemin->n_r_status && line[0] != '#')

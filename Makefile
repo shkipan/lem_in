@@ -6,7 +6,7 @@
 #    By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/07 14:30:48 by dskrypny          #+#    #+#              #
-#    Updated: 2018/08/14 13:41:58 by dskrypny         ###   ########.fr        #
+#    Updated: 2018/08/24 13:02:22 by dskrypny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SOURCE = check_line.c \
 		 pull_start_end.c \
 		 rooms.c \
 		 queue.c\
-		 printer.c
+		 printer.c \
 
 OBJ_DIR = ./objects/
 SRC_DIR = ./source/

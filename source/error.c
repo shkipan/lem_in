@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 11:09:19 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/14 17:35:51 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/23 18:13:35 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static void	map_errors(short code)
 void		error(t_lemin *lemin, short code)
 {
 	ft_printf("ERROR\n");
+	if (code == 0 && CHECK_FLAG(lemin->opt, 'e'))
+		ft_printf("Empty input\n");
 	if (code == 1 && CHECK_FLAG(lemin->opt, 'e'))
 		parse_errors(lemin);
 	if (code == -1 && CHECK_FLAG(lemin->opt, 'e'))

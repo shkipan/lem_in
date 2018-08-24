@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 10:56:54 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/14 18:29:18 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/24 12:39:36 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEM_IN_H
 
 # include "libft/libft.h"
+# include <ncurses.h>
 
 typedef struct s_room	t_room;
 
