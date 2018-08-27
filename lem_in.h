@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 10:56:54 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/24 12:39:36 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 12:58:26 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ struct			s_path
 typedef struct	s_lemin
 {
 	short			status;
+	short			direct;
 	short			n_r_status;
-	int				ants;
-	int				curr_ant;
+	long 			ants;
+	long 			curr_ant;
 	int				r_count;
 	int				l_count;
 	int				p_count;
 	unsigned int	opt;
+	char			*ants_end;
 	char			*start;
 	char			*end;
 	char			**queue;
@@ -84,6 +86,7 @@ short			bfs(t_lemin *lemin);
 
 void			add_path(t_lemin *lemin);
 void			fill_path(t_lemin *lemin, t_path **path);
+int				direct(t_lemin *lemin);
 
 int				push_ants(t_lemin *lemin);
 
@@ -91,5 +94,6 @@ void			error(t_lemin *lemin, short code);
 
 void			print_lemin(t_lemin *lemin);
 void			print_path(t_lemin *lemin);
+void			print_ants(t_lemin *lemin);
 
 #endif

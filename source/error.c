@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 11:09:19 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/23 18:13:35 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 12:22:41 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static void	link_errors(short code)
 		ft_printf("Invalid second room id in link\n");
 	if (code == 15)
 		ft_printf("The room can't be connected to itself\n");
+	if (code == 16)
+		ft_printf("Wrong place for start/end definition\n");
 }
 
 static void	parse_errors(t_lemin *lemin)

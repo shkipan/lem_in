@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 19:07:02 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/23 18:12:11 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/24 18:18:57 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	add_path(t_lemin *lemin)
 	(*path)->branch[0] = lemin->start;
 	fill_path(lemin, path);
 	lemin->p_count++;
+	if (direct(lemin))
+		lemin->direct = 1;
 }
 
 void	fill_path(t_lemin *lemin, t_path **path)

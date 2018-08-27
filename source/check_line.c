@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:04:11 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/14 18:12:49 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 13:05:05 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,12 @@ static short	check_status(t_lemin *lemin, char *line, short *ret)
 		lemin->n_r_status = 1;
 	if (!ft_strcmp(line, "##end") && !lemin->n_r_status)
 		lemin->n_r_status = 2;
+	if (!ft_strcmp(line, "##errors"))
+		lemin->opt |= SET_BIT(0, 'e' - 'a');
+	if (!ft_strcmp(line, "##leaks"))
+		lemin->opt |= SET_BIT(0, 'l' - 'a');
+	if (!ft_strcmp(line, "##results"))
+		lemin->opt |= SET_BIT(0, 'r' - 'a');
 	return (x);
 }
 

@@ -1,5 +1,7 @@
-*.o
 *.swp
-libft.a
+*.o
+libft/libft.a
 .DS_Store
 lem-in
+libft/*.swp
+libft/.DS_Store

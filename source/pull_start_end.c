@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:11:48 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/09 20:48:05 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 12:11:52 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	pull_se(t_lemin *lemin, char *line)
 		error(lemin, 41);
 	if (lemin->end && lemin->n_r_status == 2)
 		error(lemin, 42);
-	temp = ft_strchr(line, ' ');
+	if (!(temp = ft_strchr(line, ' ')))
+		error(lemin, 16);
 	length = ft_strlen(line) - ft_strlen(temp);
 	if (lemin->n_r_status == 1)
 	{

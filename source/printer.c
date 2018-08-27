@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 10:41:06 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/23 18:13:27 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 12:14:16 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static void		print_rooms(t_lemin *lemin)
 	while (room)
 	{
 		if (!ft_strcmp(room->id, lemin->start))
-			ft_printf("%{red}s %s|%d %d|\n", "start", room->id, room->x,
+			ft_printf("%-{red}5s %s|%d %d|\n", "start", room->id, room->x,
 					room->y);
 		else if (!ft_strcmp(room->id, lemin->end))
-			ft_printf("%{grn}s %s|%d %d|\n", "end", room->id, room->x,
+			ft_printf("%-{grn}5s %s|%d %d|\n", "end", room->id, room->x,
 					room->y);
 		else
-			ft_printf("%{yel}s %s|%d %d|\n", "room", room->id, room->x,
+			ft_printf("%-{yel}5s %s|%d %d|\n", "room", room->id, room->x,
 					room->y);
 		room = room->next;
 	}

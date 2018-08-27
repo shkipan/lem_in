@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:01:52 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/24 16:37:26 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 12:13:30 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_lemin	*init_lemin(int ac, char **av)
 	ret = (t_lemin *)malloc(sizeof(t_lemin));
 	ret->ants = 0;
 	ret->status = 'a';
+	ret->direct = 0;
 	ret->curr_ant = 1;
 	ret->r_count = 0;
 	ret->l_count = 0;
@@ -37,6 +38,11 @@ static void		read_lemin(t_lemin *lemin)
 
 	while (get_next_line(0, &line) > 0)
 	{
+		if (!ft_strcmp(line, ""))
+		{
+			free(line);
+			break ;
+		}
 		check_line(lemin, line);
 		if (lemin->n_r_status && line[0] != '#')
 			pull_se(lemin, line);
@@ -54,10 +60,12 @@ static void		lock_rooms(t_lemin *lemin)
 	while (path)
 	{
 		i = -1;
-		while (path->branch[++i])
+		while (++i < path->length)
+		{
 			if (ft_strcmp(path->branch[i], lemin->start) &&
 					ft_strcmp(path->branch[i], lemin->end))
 				find_room(lemin, path->branch[i])->status = 'w';
+		}
 		path = path->next;
 	}
 }
@@ -75,6 +83,8 @@ static int		spin_lemin(t_lemin *lemin)
 	if (r == -1 && lemin->p_count)
 		return (0);
 	add_path(lemin);
+	if (lemin->direct)
+		return (0);
 	room = lemin->rooms;
 	while (room)
 	{
@@ -90,14 +100,20 @@ static int		spin_lemin(t_lemin *lemin)
 int				main(int ac, char **av)
 {
 	t_lemin	*lemin;
+	int		i;
 
 	lemin = init_lemin(ac, av);
 	read_lemin(lemin);
 	while (spin_lemin(lemin))
 		NULL;
+	find_room(lemin, lemin->start)->ant = lemin->ants;
+	lemin->ants_end = ft_strnew(lemin->ants + 2);
+	i = -1;
+	while (++i <= lemin->ants)
+		lemin->ants_end[i] = '0';
+	lemin->ants_end[i] = '\0';
 	if (CHECK_FLAG(lemin->opt, 'r'))
 		print_lemin(lemin);
-	find_room(lemin, lemin->start)->ant = lemin->ants;
 	ft_printf("\n");
 	while (push_ants(lemin))
 		NULL;
