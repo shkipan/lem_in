@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 11:09:19 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/27 12:22:41 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 17:38:16 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,5 @@ void		error(t_lemin *lemin, short code)
 		map_errors(code);
 	if (CHECK_FLAG(lemin->opt, 'l'))
 		system("leaks lem-in");
-	exit(1);
+	exit(0);
 }

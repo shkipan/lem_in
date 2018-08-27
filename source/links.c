@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 16:12:27 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/13 18:05:05 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 18:42:16 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,19 @@ static void	create_links(t_lemin *lemin)
 		lemin->queue[i] = NULL;
 }
 
-static void	add_rooms_to_link(t_lemin *lemin, char *n1, char *n2)
+static int	add_rooms_to_link(t_lemin *lemin, char *n1, char *n2)
 {
 	t_room	*room1;
 	t_room	*room2;
 	t_link	*link;
 	int		i;
 
-	if (!(room1 = find_room(lemin, n1)))
-		error(lemin, 13);
-	if (!(room2 = find_room(lemin, n2)))
-		error(lemin, 14);
+	if (!(room1 = find_room(lemin, n1)) ||
+			!(room2 = find_room(lemin, n2)))
+	{
+		lemin->end_read = 1;
+		return (0);
+	}
 	link = find_link(lemin, n1);
 	i = 0;
 	while (i < lemin->r_count && LBR_I && ft_strcmp(LBR_I, n2))
@@ -62,6 +64,7 @@ static void	add_rooms_to_link(t_lemin *lemin, char *n1, char *n2)
 		i++;
 	if (!link->branch[i])
 		link->branch[i] = ft_strdup(n1);
+	return (1);
 }
 
 void		add_link(t_lemin *lemin, char *line)
@@ -82,8 +85,8 @@ void		add_link(t_lemin *lemin, char *line)
 	n1[len] = '\0';
 	if (!ft_strcmp(n1, n2))
 		error(lemin, 15);
-	add_rooms_to_link(lemin, n1, n2);
-	lemin->l_count += 1;
+	if (add_rooms_to_link(lemin, n1, n2))
+		lemin->l_count += 1;
 }
 
 t_link		*find_link(t_lemin *lemin, char *id)

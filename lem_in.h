@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 10:56:54 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/27 12:58:26 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 18:42:13 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ typedef struct	s_lemin
 	short			status;
 	short			direct;
 	short			n_r_status;
-	long 			ants;
-	long 			curr_ant;
+	short			end_read;
+	long			ants;
+	long			curr_ant;
 	int				r_count;
 	int				l_count;
 	int				p_count;

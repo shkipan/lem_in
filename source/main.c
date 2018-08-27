@@ -6,7 +6,7 @@
 /*   By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 11:01:52 by dskrypny          #+#    #+#             */
-/*   Updated: 2018/08/27 12:13:30 by dskrypny         ###   ########.fr       */
+/*   Updated: 2018/08/27 18:38:43 by dskrypny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_lemin	*init_lemin(int ac, char **av)
 	ret->ants = 0;
 	ret->status = 'a';
 	ret->direct = 0;
+	ret->end_read = 0;
 	ret->curr_ant = 1;
 	ret->r_count = 0;
 	ret->l_count = 0;
@@ -44,6 +45,11 @@ static void		read_lemin(t_lemin *lemin)
 			break ;
 		}
 		check_line(lemin, line);
+		if (lemin->end_read)
+		{
+			free(line);
+			break ;
+		}
 		if (lemin->n_r_status && line[0] != '#')
 			pull_se(lemin, line);
 		free(line);

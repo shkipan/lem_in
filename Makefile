@@ -6,13 +6,14 @@
 #    By: dskrypny <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/07 14:30:48 by dskrypny          #+#    #+#              #
-#    Updated: 2018/08/24 13:02:22 by dskrypny         ###   ########.fr        #
+#    Updated: 2018/08/24 20:07:19 by dskrypny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
 SOURCE = check_line.c \
+		 direct.c \
 		 error.c \
 		 links.c \
 		 main.c \
@@ -22,6 +23,7 @@ SOURCE = check_line.c \
 		 rooms.c \
 		 queue.c\
 		 printer.c \
+		 print_ants.c
 
 OBJ_DIR = ./objects/
 SRC_DIR = ./source/
@@ -41,6 +43,11 @@ $(NAME): $(OBJ)
 	@gcc $(FLAGS) $(OBJ) -o $(NAME) $(LIB)
 	@echo "$(NAME) compiled"
 
+$(OBJ): | $(OBJ_DIR)
+
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)
+
 $(OBJ_DIR)%.o: %.c
 	@gcc $(FLAGS) -c -o $@ $< 
 
@@ -51,6 +58,7 @@ clean:
 
 fclean: clean
 	@make fclean -C libft/
+	@rm -rf $(OBJ_DIR)
 	@rm -rf $(NAME)
 	@echo "$(NAME) file deleted"
 
